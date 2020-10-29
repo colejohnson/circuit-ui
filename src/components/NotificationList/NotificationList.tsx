@@ -52,8 +52,9 @@ const baseStyles = ({ theme }: StyleProps) => css`
 
 const NotificationListWrapper = styled('ul')<{}>(baseStyles);
 
-// FIXME: Remove typecast once the Card has been migrated to TypeScript.
-const NotificationListCard = Card.withComponent('li') as any;
+// FIXME: how to use li: Card.withComponent('li');
+// const NotificationListCard = Card.withComponent('li');
+const NotificationListCard = styled(Card)<NotificationListProps>();
 
 /**
  * NotificationList displays Notifications as Cards in a corner.
@@ -64,7 +65,7 @@ export const NotificationList = ({
 }: NotificationListProps) => (
   <NotificationListWrapper {...props} aria-live="polite">
     {Children.map(children, (child, i) => (
-      <NotificationListCard spacing="mega" shadow="double" key={i}>
+      <NotificationListCard spacing="mega" shadow="double" key={i} as="li">
         {child}
       </NotificationListCard>
     ))}
