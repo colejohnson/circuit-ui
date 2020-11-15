@@ -13,25 +13,5 @@
  * limitations under the License.
  */
 
-import Stylis from '@emotion/stylis';
-
-import { BaseStyles } from '../../src';
-
-import render from './render';
-
-const stylis = new Stylis();
-
-export default function globalStyles({ theme } = {}) {
-  let styleSheet = '';
-
-  const insertFactory = () => (...args) => {
-    const rules = args[1].styles;
-    styleSheet = stylis('', rules);
-  };
-
-  const renderFn = render(theme, insertFactory);
-
-  renderFn(BaseStyles);
-
-  return styleSheet;
-}
+export { FunctionalComponent } from './functional-component';
+export { StyledComponent } from './styled-component';
